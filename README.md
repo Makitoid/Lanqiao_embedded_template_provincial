@@ -1,0 +1,2 @@
+# Lanqiao_embedded_template_provincial
+蓝桥杯嵌入式竞赛省赛模板
