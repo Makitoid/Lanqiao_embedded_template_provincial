@@ -4,8 +4,8 @@
   Ӳ������: CT117EǶ��ʽ������
   ��    ��: 2011-8-9
 */
-#include "lcd/lcd.h"
-#include "lcd/fonts.h"
+#include "lcd/bsp_lcd.h"
+#include "lcd/bsp_fonts.h"
 //#include "systick.h"
 static  vu16 TextColor = 0x0000, BackColor = 0xFFFF;
 vu16 dummy;

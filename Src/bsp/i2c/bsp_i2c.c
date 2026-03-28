@@ -187,8 +187,8 @@ unsigned char I2CReceiveByte(void)
         cR_Byte |=  SDA_Input();
     }
     SCL_Output(0);
-    delay1(DELAY_TIME);
     SDA_Output_Mode();
+	delay1(DELAY_TIME);
     return cR_Byte;
 }
 
@@ -205,7 +205,8 @@ void I2CInit(void)
 }
 
 //手写
-void i2c_24C02_write(uint8_t *pucbuf,uint8_t ucAddr,uint8_t ucNum)
+
+void i2c_24C02_write(uint8_t *pucBuf,uint8_t ucAddr,uint8_t ucNum)
 {
 	I2CStart();
 	I2CSendByte(0xa0);
@@ -216,7 +217,7 @@ void i2c_24C02_write(uint8_t *pucbuf,uint8_t ucAddr,uint8_t ucNum)
 	
 	while(ucNum--)
 	{
-		I2CSendByte(*pucbuf++);
+		I2CSendByte(*pucBuf++);
 		I2CWaitAck();
 	}
 	I2CStop();
@@ -240,38 +241,31 @@ void i2c_24C02_read(uint8_t *pucBuf,uint8_t ucAddr,uint8_t ucNum)
 	{
 		*pucBuf++=I2CReceiveByte();
 		if(ucNum)
-		{
-			
 			I2CSendAck();
-		}
 		else
 			I2CSendNotAck();
 	}
 	I2CStop();
 }
 
-void res4017_write(uint8_t value)
+void write_resistor(uint8_t value)
 {
 	I2CStart();
 	I2CSendByte(0x5E);
 	I2CWaitAck();
-	
 	I2CSendByte(value);
 	I2CWaitAck();
-	
 	I2CStop();
 }
 
-uint8_t res4017_read(void)
+uint8_t read_resistor(void)
 {
-	uint8_t value;
+	uint8_t value=0;
 	I2CStart();
 	I2CSendByte(0x5F);
 	I2CWaitAck();
-	
 	value=I2CReceiveByte();
 	I2CSendNotAck();
 	I2CStop();
-	
 	return value;
 }

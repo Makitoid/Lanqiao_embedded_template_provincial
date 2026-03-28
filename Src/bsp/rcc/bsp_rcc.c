@@ -1,4 +1,5 @@
 #include "rcc/bsp_rcc.h"
+
 /**
   * @brief System Clock Configuration
   * @retval None
@@ -65,7 +66,6 @@ void Error_Handler(void)
 }
 
 #ifdef  USE_FULL_ASSERT
-
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.

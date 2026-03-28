@@ -2,7 +2,7 @@
 
 UART_HandleTypeDef huart1;
 
-
+/* USART1 init function */
 
 void Uart1_Init(void)
 {
@@ -33,7 +33,7 @@ void Uart1_Init(void)
   {
     Error_Handler();
   }
-  
+
 }
 
 void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
@@ -43,7 +43,6 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
   if(uartHandle->Instance==USART1)
   {
- 
   /** Initializes the peripherals clocks
   */
     PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1;
@@ -69,8 +68,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     /* USART1 interrupt Init */
-    HAL_NVIC_SetPriority(USART1_IRQn, 0, 1);
+    HAL_NVIC_SetPriority(USART1_IRQn, 1, 0);
     HAL_NVIC_EnableIRQ(USART1_IRQn);
- 
+
+  /* USER CODE END USART1_MspInit 1 */
   }
 }

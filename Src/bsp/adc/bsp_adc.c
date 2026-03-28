@@ -10,6 +10,10 @@ void ADC1_Init(void)
   ADC_MultiModeTypeDef multimode = {0};
   ADC_ChannelConfTypeDef sConfig = {0};
 
+  /* USER CODE BEGIN ADC1_Init 1 */
+
+  /* USER CODE END ADC1_Init 1 */
+
   /** Common config
   */
   hadc1.Instance = ADC1;
@@ -58,7 +62,6 @@ void ADC1_Init(void)
 /* ADC2 init function */
 void ADC2_Init(void)
 {
-
   ADC_ChannelConfTypeDef sConfig = {0};
 
   /** Common config
@@ -96,10 +99,6 @@ void ADC2_Init(void)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN ADC2_Init 2 */
-
-  /* USER CODE END ADC2_Init 2 */
-
 }
 
 static uint32_t HAL_RCC_ADC12_CLK_ENABLED=0;
@@ -111,9 +110,6 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
   if(adcHandle->Instance==ADC1)
   {
-  /* USER CODE BEGIN ADC1_MspInit 0 */
-
-  /* USER CODE END ADC1_MspInit 0 */
 
   /** Initializes the peripherals clocks
   */
@@ -173,24 +169,23 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     /* ADC2 interrupt Init */
     HAL_NVIC_SetPriority(ADC1_2_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(ADC1_2_IRQn);
-
   }
 }
-//手打
+
+//手写区
+
 uint16_t getADC1(void)
 {
-	uint16_t adc;
-	
+	uint16_t value;
 	HAL_ADC_Start(&hadc1);
-	adc=HAL_ADC_GetValue(&hadc1);
-	return adc;
+	value=HAL_ADC_GetValue(&hadc1);
+	return value;
 }
 
 uint16_t getADC2(void)
 {
-	uint16_t adc;
-	
+	uint16_t value;
 	HAL_ADC_Start(&hadc2);
-	adc=HAL_ADC_GetValue(&hadc2);
-	return adc;
+	value=HAL_ADC_GetValue(&hadc2);
+	return value;
 }

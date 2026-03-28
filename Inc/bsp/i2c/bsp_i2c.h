@@ -12,8 +12,9 @@ void I2CSendByte(unsigned char cSendByte);
 unsigned char I2CReceiveByte(void);
 void I2CInit(void);
 
-void i2c_24C02_write(uint8_t *pucbuf,uint8_t ucAddr,uint8_t ucNum);
-void i2c_24C02_read(uint8_t *pucbuf,uint8_t ucAddr,uint8_t ucNum);
-void res4017_write(uint8_t value);
-uint8_t res4017_read(void);
 #endif
+void i2c_24C02_write(uint8_t *pucBuf,uint8_t ucAddr,uint8_t ucNum);
+void i2c_24C02_read(uint8_t *pucBuf,uint8_t ucAddr,uint8_t ucNum);
+void write_resistor(uint8_t value);
+uint8_t read_resistor(void);
+
